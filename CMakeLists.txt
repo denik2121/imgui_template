@@ -30,11 +30,23 @@ else()
   message(STATUS "git-chglog not found, changelog will not be updated")
 endif()
 
-enable_testing()
+add_subdirectory(deps/spdlog)
+add_subdirectory(deps/imgui)
+add_subdirectory(deps/glfw)
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/deps/fmt)
-link_libraries(fmt::fmt-header-only)
+include_directories(deps/spdlog/include)
+include_directories(deps/glfw/include)
+
+add_compile_definitions(APP_NAME="${ROOT}")
+add_compile_definitions(STB_IMAGE_IMPLEMENTATION)
+add_subdirectory(assets)
+
+include_directories(${CMAKE_CURRENT_LIST_DIR})
+include_directories(${CMAKE_CURRENT_LIST_DIR}/deps)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/deps/imgui)
+add_subdirectory(src)
+
+enable_testing()
 add_compile_definitions(DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/deps/doctest)
-add_subdirectory(src)
 add_subdirectory(test)
