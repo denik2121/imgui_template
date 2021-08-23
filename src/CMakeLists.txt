@@ -4,7 +4,8 @@ if(WIN32)
   set(gl_libs opengl32)
 endif(WIN32)
 
-if(LINUX)
+if(UNIX)
+  message(STATUS "Building for ${CMAKE_SYSTEM}")
   set(gl_libs GL)
 endif()
 

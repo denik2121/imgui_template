@@ -5,8 +5,9 @@ if(WIN32)
   )
 endif(WIN32)
 
-if(LINUX)
-  execute_process(COMMAND xxid -i icon.png > icon.png.h
+if(UNIX)
+  execute_process(COMMAND xxd -i icon.png
+    OUTPUT_FILE icon.png.h
     WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
     ENCODING UTF-8
   )
