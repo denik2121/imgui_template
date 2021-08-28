@@ -66,8 +66,7 @@ int main(int argc, char** argv) {
     // background
     ImGuiWindowFlags background_flags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize |
                                         ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar |
-                                        ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoInputs |
-                                        ImGuiWindowFlags_AlwaysAutoResize;
+                                        ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoBringToFrontOnFocus;
     const auto size = ImGui::GetMainViewport()->WorkSize;
     ImGui::SetNextWindowSize(size);
     ImGui::SetNextWindowPos(ImVec2(0, 0));
